@@ -319,8 +319,10 @@ async fn main() {
 				
 				// Share link
 				Some(id) if (8..12).contains(&id.len()) => match canonical_path(format!("/r/{}/s/{}", sub, id)).await {
-					Ok(Some(path)) => Ok(redirect(path.split('?').next().unwrap_or_default().to_string())),
-					Ok(None) => error(req, "Post ID is invalid. It may point to a post on a community that has been banned.").await,
+					Ok(path_opt) => match path_opt {
+						Some(path) => Ok(redirect(path)),
+						None => error(req, "Post ID is invalid. It may point to a post on a community that has been banned.").await,
+					},
 					Err(e) => error(req, e).await,
 				},
 

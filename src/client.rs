@@ -140,7 +140,7 @@ fn request(method: &'static Method, path: String, redirect: bool, quarantine: bo
 	let builder = Request::builder()
 		.method(method)
 		.uri(&url)
-		.header("User-Agent", concat!("web:libreddit:", env!("CARGO_PKG_VERSION")))
+		.header("User-Agent", "web:libreddit:0.30.1")
 		.header("Host", "www.reddit.com")
 		.header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
 		.header("Accept-Encoding", if method == Method::GET { "gzip" } else { "identity" })
