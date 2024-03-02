@@ -33,6 +33,7 @@ const PREFS: [&str; 13] = [
 	"autoplay_videos",
 	"fixed_navbar",
 	"hide_awards",
+	"disable_visit_reddit_confirmation",
 ];
 
 // FUNCTIONS
